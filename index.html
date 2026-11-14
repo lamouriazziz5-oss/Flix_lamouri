@@ -57,9 +57,11 @@ footer{text-align:center;color:#9baac0;padding:25px}
   <div class="card">
     <h2>خدمات الهاتف</h2>
     <p>استكشف شركات الهاتف المتوفرة:</p>
-    <div class="company">Mobilis</div>
-    <div class="company">Ooredoo</div>
-    <div class="company">Djezzy</div>
+    <button class="company" onclick="showCompany('Mobilis')">Mobilis</button>
+
+<button class="company" onclick="showCompany('Ooredoo')">Ooredoo</button>
+
+<button class="company" onclick="showCompany('Djezzy')">Djezzy</button>
   </div>
 
   <div class="card">
@@ -81,6 +83,10 @@ footer{text-align:center;color:#9baac0;padding:25px}
 <footer>
   Flix Lamouri © 2026
 </footer>
-
+<script>
+function showCompany(name) {
+  alert("اخترت شركة " + name + " - نسخة تجريبية");
+}
+</script>
 </body>
 </html>
