@@ -84,10 +84,49 @@ footer{text-align:center;color:#9baac0;padding:25px}
   Flix Lamouri © 2026
 </footer>
 <script>
+
 function showCompany(name) {
-  document.getElementById("result").textContent =
-    "اخترت شركة " + name + " بنجاح - نسخة تجريبية";
+  document.getElementById("result").innerHTML = `
+    <div class="card">
+      <h2>شحن ${name}</h2>
+
+      <p>أدخل رقم تجريبي فقط:</p>
+      <input
+        id="phone"
+        type="tel"
+        placeholder="مثال: 0000000000"
+        style="width:100%;padding:14px;margin:10px 0;border-radius:10px;"
+      >
+
+      <p>اختر مبلغ الشحن:</p>
+      <select id="amount"
+        style="width:100%;padding:14px;margin:10px 0;border-radius:10px;">
+        <option value="100">100 DA - تجريبي</option>
+        <option value="200">200 DA - تجريبي</option>
+        <option value="500">500 DA - تجريبي</option>
+      </select>
+
+      <button class="company" onclick="demoContinue()">
+        متابعة
+      </button>
+    </div>
+  `;
 }
+
+function demoContinue() {
+  const phone = document.getElementById("phone").value;
+  const amount = document.getElementById("amount").value;
+
+  if (!phone.trim()) {
+    alert("أدخل رقماً تجريبياً");
+    return;
+  }
+
+  document.getElementById("result").innerHTML =
+    "تم إنشاء طلب تجريبي بقيمة " + amount +
+    " DA. لا توجد عملية شحن حقيقية.";
+}
+
 </script>
 </body>
 </html>
