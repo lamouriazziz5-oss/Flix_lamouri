@@ -92,19 +92,25 @@ function showCompany(name) {
 
       <p>أدخل رقم تجريبي فقط:</p>
       <input
-        id="phone"
-        type="tel"
-        placeholder="مثال: 0000000000"
+id="phone"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="أدخل 10 أرقام فقط"
         style="width:100%;padding:14px;margin:10px 0;border-radius:10px;"
       >
 
       <p>اختر مبلغ الشحن:</p>
-      <select id="amount"
-        style="width:100%;padding:14px;margin:10px 0;border-radius:10px;">
-        <option value="100">100 DA - تجريبي</option>
-        <option value="200">200 DA - تجريبي</option>
-        <option value="500">500 DA - تجريبي</option>
-      </select>
+      <input
+id="amount"
+type="number"
+min="100"
+max="3000"
+step="1"
+placeholder="المبلغ من 100 إلى 3000 دج"
+style="width:100%;padding:14px;margin:10px 0;border-radius:10px;"
+>
 
       <button class="company" onclick="demoContinue()">
         متابعة
@@ -117,10 +123,17 @@ function demoContinue() {
   const phone = document.getElementById("phone").value;
   const amount = document.getElementById("amount").value;
 
-  if (!phone.trim()) {
-    alert("أدخل رقماً تجريبياً");
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("رقم الهاتف يجب أن يتكون من 10 أرقام فقط");
     return;
-  }
+}
+
+if (!Number.isInteger(Number(amount)) ||
+    Number(amount) < 100 ||
+    Number(amount) > 3000) {
+    alert("المبلغ يجب أن يكون بين 100 و3000 دج");
+    return;
+}
 
   document.getElementById("result").innerHTML =
     "تم إنشاء طلب تجريبي بقيمة " + amount +
