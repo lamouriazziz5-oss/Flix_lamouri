@@ -63,7 +63,7 @@ footer{text-align:center;color:#9baac0;padding:25px}
 
 <button class="company" onclick="showCompany('Djezzy')">Djezzy</button>
   </div>
-
+<div id="result"></div>
   <div class="card">
     <h2>عن الموقع</h2>
     <p>
@@ -85,7 +85,8 @@ footer{text-align:center;color:#9baac0;padding:25px}
 </footer>
 <script>
 function showCompany(name) {
-  alert("اخترت شركة " + name + " - نسخة تجريبية");
+  document.getElementById("result").textContent =
+    "اخترت شركة " + name + " بنجاح - نسخة تجريبية";
 }
 </script>
 </body>
